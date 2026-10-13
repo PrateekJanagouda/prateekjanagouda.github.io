@@ -6,7 +6,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://prateekjanagouda.github.io/">
 <meta property="og:title" content="Prateek Janagouda · ML Engineer, LLM systems">
-<meta property="og:description" content="Building LLM systems that work in production: agentic RAG, vLLM inference to 1,000 users, and agents.">
+<meta property="og:description" content="Building LLM systems that work in production: agentic RAG, LLM inference that holds up under load, and tool-calling agents.">
 <meta property="og:image" content="https://prateekjanagouda.github.io/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="627">
 <meta property="og:image:alt" content="Prateek Janagouda, ML Engineer: building LLM systems that work in production">
@@ -311,7 +311,7 @@ footer{position:relative;z-index:2;padding:2rem var(--gut) 3rem;display:flex;jus
   </div>
   <div class="fx front" aria-hidden="true">
   <span class="chipf" data-d="1.2" style="--k:0;left:14%;top:46%"><i style="--t:6s">top-k <b>= 6</b></i></span>
-  <span class="chipf" data-d="1.8" style="--k:1;right:15%;top:40%"><i style="--t:7s">vLLM · <b>790 tok/s</b></i></span>
+  <span class="chipf" data-d="1.8" style="--k:1;right:15%;top:40%"><i style="--t:7s">vLLM · <b>continuous batching</b></i></span>
   <span class="chipf far" data-d=".7" style="--k:2;left:27%;top:30%"><i style="--t:5.5s">∇L</i></span>
   <span class="chipf" data-d="2.2" style="--k:3;right:27%;top:24%"><i style="--t:6.5s">cite <b>file:line ✓</b></i></span>
   <span class="chipf far" data-d="1" style="--k:4;left:22%;top:62%"><i style="--t:7.5s">attn(Q,K,V)</i></span>
@@ -333,7 +333,7 @@ footer{position:relative;z-index:2;padding:2rem var(--gut) 3rem;display:flex;jus
 
 <section class="statement">
   <div class="wrap">
-    <p class="big" id="stmt">Two years making LLMs <span class="chip">answer</span> with proof, and <span class="hl">scale</span> from 20 users to a thousand.</p>
+    <p class="big" id="stmt">Two years making LLMs <span class="chip">answer</span> with proof, and <span class="hl">scale</span> from one user to a whole team.</p>
     <p class="sub">I'm Prateek, an ML engineer at Synchronoss in Bangalore. I build RAG, agents and LLM inference that our engineering team relies on.</p>
   </div>
   <i class="shape s-sphere" data-s="1.2" data-r="40" style="width:clamp(110px,15vw,230px);aspect-ratio:1;right:-3vw;top:6%"></i>
@@ -377,9 +377,9 @@ footer{position:relative;z-index:2;padding:2rem var(--gut) 3rem;display:flex;jus
 <section class="stack" id="stack">
   <div class="wrap">
     <div class="eyebrow" style="margin-bottom:1.5rem">What I work in</div>
-    <div class="line"><h4>vLLM <span class="b">&amp; Qwen</span></h4><p>Serving open models fast. Continuous batching, guided decoding, load tests to 2,000 users.</p></div>
+    <div class="line"><h4>vLLM <span class="b">&amp; open models</span></h4><p>Serving open models fast. Continuous batching, guided decoding, load testing for real concurrency.</p></div>
     <div class="line"><h4>RAG <span class="b">&amp; Agents</span></h4><p>Qdrant, Postgres, rerankers and tool-calling agents that must cite their evidence.</p></div>
-    <div class="line"><h4>Python <span class="b">&amp; Java</span></h4><p>FastAPI on the AI side, 61 Spring Boot microservices on the other.</p></div>
+    <div class="line"><h4>Python <span class="b">&amp; Java</span></h4><p>FastAPI on the AI side, Spring Boot microservices on the other.</p></div>
   </div>
 </section>
 
@@ -426,13 +426,13 @@ const $ = id => document.getElementById(id);
 
 /* ---------- projects ---------- */
 const P = [
-  { t:'Code Brain', k:'Agentic RAG', m:'Synchronoss', x:'95% eval pass', one:'Plain-English questions about 61 microservices, answered with citations into the code. Used regularly by the engineering team.',
+  { t:'Codebase Q&A agent', k:'Agentic RAG', m:'Work', x:'Every answer cited', one:'Plain-English questions about a large microservice codebase, answered with citations into the source. Used by engineers day to day.',
     vis:`<div class="v-graph"><svg viewBox="0 0 300 220" aria-hidden="true">${(()=>{let s='',pts=[];for(let i=0;i<16;i++)pts.push([30+Math.random()*240,25+Math.random()*150]);pts.forEach((a,i)=>pts.forEach((b,j)=>{if(j>i&&Math.hypot(a[0]-b[0],a[1]-b[1])<80)s+=`<line x1="${a[0]|0}" y1="${a[1]|0}" x2="${b[0]|0}" y2="${b[1]|0}" stroke="#a497f0" stroke-opacity=".55"/>`}));pts.forEach((p,i)=>s+=`<circle cx="${p[0]|0}" cy="${p[1]|0}" r="${i%5?3.5:6}" fill="${i%5?'#c9befd':'#fff'}"/>`);return s})()}</svg><span class="v-cite">answer → cited file:line ✓</span></div>`,
-    p:'~50K Java files and ~350K symbols. Nobody can hold that in their head, and a chatbot that guesses is worse than nothing.',
-    d:'Two stores, not one: Postgres keeps exact facts (call graph, beans, endpoints), Qdrant handles semantic search over ~1M chunks. A javap bytecode pass resolves calls that tree-sitter alone cannot see.',
-    r:'The agent runs on Qwen3-30B-A3B via vLLM with 20+ retrieval tools. Every answer must cite evidence, checked by a citation validator. Auto-generated eval suite: 95% pass.',
-    tags:['vLLM','Qwen3-30B-A3B','Qdrant','PostgreSQL','tree-sitter','bge-reranker','FastAPI'] },
-  { t:'Helm Agent', k:'Config safety', m:'Synchronoss', x:'50+ microservices', one:'An agent built to push Helm chart upgrades to customer environments without hallucinated YAML.',
+    p:'A large, long-lived codebase is more than anyone can hold in their head, and a chatbot that guesses is worse than nothing.',
+    d:'Exact facts and fuzzy meaning need different stores: a relational store for structure (who calls what), a vector store for semantic search. Static analysis fills in links that plain parsing misses.',
+    r:'A tool-calling agent on a self-hosted open model. Every answer must cite its evidence, and a validator rejects answers that do not. Quality is tracked against an automatically generated eval suite.',
+    tags:['Agentic RAG','vLLM','Vector search','PostgreSQL','Reranking','FastAPI'] },
+  { t:'Config-upgrade agent', k:'Config safety', m:'Work', x:'Patches, never rewrites', one:'An agent that carries configuration upgrades across deployment environments without hallucinated YAML.',
     vis:`<div class="v-code">[
   { <b>"op"</b>: <i>"replace"</i>,
     <b>"path"</b>: <i>"/image/tag"</i>,
@@ -441,18 +441,18 @@ const P = [
     <b>"path"</b>: <i>"/env/RETRY_MAX"</i>,
     <b>"value"</b>: <i>"5"</i> }
 ]
-✓ helm template  ✓ kubeconform
-✓ detect-secrets ✓ yamllint</div>`,
-    p:'Manual propagation from the source-of-truth environment was slow and error-prone, on config where one wrong key takes a customer down.',
-    d:'The model never rewrites YAML. It only emits RFC 6902 JSON Patch ops against a fixed schema, grounded in the real git diff. Constrained output beats clever prompting.',
-    r:'Catches version drift and missing keys, keeps each customer\'s overrides, comments and secret pragmas intact. Every change passes helm template, kubeconform and pre-commit, with auto-fix and rollback.',
-    tags:['Python','jsonpatch','ruamel.yaml','GitPython','Helm','kubeconform'] },
-  { t:'20 → 1,000 users', k:'Inference', m:'Synchronoss', x:'1,000 concurrent · ~790 tok/s', one:'Moved JUnit generation from Ollama to vLLM so the whole team could use it at once.',
-    vis:`<div class="v-bars"><div>concurrent users @ 100% success</div><div class="bad"><div>Ollama</div><div class="t"><div class="f" style="width:2%"></div><span>fails at 20</span></div></div><div><div>vLLM</div><div class="t"><div class="f" style="width:100%"></div><span>1,000 ✓</span></div></div></div>`,
-    p:'Load testing showed Ollama dropping every request at 20 concurrent users. Useless for a team.',
-    d:'Benchmarked 5+ open models (LLaMA, StarCoder, CodeGen) for Java tests, moved serving to vLLM for continuous batching, and load-tested with an async script from 1 to 2,000 users.',
-    r:'1,000 concurrent users at 100% success and ~790 tokens/sec. Wired into IntelliJ through Continue so developers generate tests inside their editor.',
-    tags:['vLLM','Ollama','LLaMA','StarCoder','Continue','IntelliJ'] },
+✓ render       ✓ schema check
+✓ secrets scan ✓ lint</div>`,
+    p:'Copying config changes between environments by hand was slow and error-prone, and one wrong key can take a service down.',
+    d:'The model never rewrites YAML. It only emits RFC 6902 JSON Patch ops against a fixed schema, grounded in the real diff. Constrained output beats clever prompting.',
+    r:'Catches version drift and missing keys while keeping each environment\'s overrides and comments intact. Every change is rendered, schema-checked and linted before it lands, with rollback.',
+    tags:['Python','JSON Patch','YAML','Kubernetes','Validation'] },
+  { t:'One user → whole team', k:'Inference', m:'Work', x:'Full-team concurrency', one:'Moved an internal code-generation tool onto a production inference server so everyone could use it at once.',
+    vis:`<div class="v-bars"><div>concurrent load · success rate</div><div class="bad"><div>local server</div><div class="t"><div class="f" style="width:3%"></div><span>breaks early</span></div></div><div><div>vLLM</div><div class="t"><div class="f" style="width:100%"></div><span>whole team ✓</span></div></div></div>`,
+    p:'Load testing showed the local model server failing as soon as more than a handful of people used it at once.',
+    d:'Benchmarked several open code models, moved serving to vLLM for continuous batching, and load-tested with an async harness well past expected traffic.',
+    r:'Holds full-team concurrency with every request succeeding, and plugs into developers\' IDEs so they use it where they write code.',
+    tags:['vLLM','Ollama','Open code models','Load testing','IDE integration'] },
   { t:'Bunaai Ghar', k:'Client website', m:'freelance', x:'Live site', one:'Storefront for a mother–daughter crochet studio.',
     vis:`<div class="v-site"><small>BUNAAI GHAR</small><b>Handwoven<br>with love.</b><div class="y"><i style="--a:#d6a078;--b:#b9825c"></i><i style="--a:#8a9a7b;--b:#6f7f62"></i><i style="--a:#d98f8f;--b:#bb7474"></i></div><em style="position:absolute;right:.7rem;bottom:.6rem;font:500 .6rem JetBrains Mono,monospace;color:#a8a29e;font-style:normal">illustration</em></div>`,
     p:'A small handmade brand selling cardigans, bags and bouquets needed a home online that felt as warm as the product.',
@@ -707,7 +707,7 @@ const gauss = () => Math.sqrt(-2 * Math.log(rnd() + 1e-9)) * Math.cos(2 * Math.P
 
 /* one hue per project, all in the site's violet family so it reads as one system */
 const HUE = ['#9d8cff', '#6fb7ff', '#ffb38a', '#ff8fc8', '#7fe3cf', '#c99bff'].map(c => new THREE.Color(c));
-// related work sits closer: Code Brain ↔ MiniRAG, Inference ↔ PyTestGen
+// related work sits closer: Codebase Q&A ↔ MiniRAG, Inference ↔ PyTestGen
 const C = [[-2.9, .9, .3], [.2, 1.7, -1.3], [3.0, .5, .4], [.9, -1.8, 1.4], [-2.0, -1.3, -.9], [2.2, -1.5, -1.1]].map(a => new THREE.Vector3(...a));
 
 const PER = small ? 90 : 150, NOISE = small ? 60 : 110;
@@ -793,7 +793,7 @@ const bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), .85, .55, .05); compo
 composer.addPass(new OutputPass());
 
 const Q = [
-  ['which service calls the billing API?', 0], ['bump an image tag across 50 helm charts', 1], ['serve 1,000 concurrent users', 2],
+  ['which function calls this endpoint?', 0], ['propagate a config change safely', 1], ['serve the whole team at once', 2],
   ['a rag pipeline with only numpy', 4], ['write unit tests for utils.py, offline', 5], ['a website for a crochet studio', 3]
 ];
 const qEl = document.getElementById('spQ'), rEl = document.getElementById('spR');
