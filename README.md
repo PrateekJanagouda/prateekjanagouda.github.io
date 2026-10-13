@@ -6,4 +6,4 @@ Live: https://prateekjanagouda.github.io
 
 - Single static page (`index.html`), no build step
 - Motion: GSAP + ScrollTrigger, Lenis smooth scroll (loaded from CDN)
-- Hero video is AI-generated from my photo and labelled as such on the page
+- Hero avatar is a 3D render AI-generated from my photo and labelled as such on the page
