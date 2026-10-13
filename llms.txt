@@ -1,0 +1,28 @@
+# Prateek Janagouda
+
+> Machine learning engineer in Bangalore, India, building LLM systems that work in production: agentic RAG with cited answers, LLM inference with vLLM, and tool-calling AI agents. Open to ML engineering roles (on-site, hybrid or remote).
+
+- Current role: ML Engineer at Synchronoss Technologies, Bangalore
+- Education: Visvesvaraya Technological University
+- Focus: retrieval-augmented generation (RAG), AI agents, LLM serving and inference, evaluation of LLM systems
+- Stack: Python, FastAPI, vLLM, Ollama, open-weight LLMs, Qdrant, PostgreSQL, embeddings and reranking, Java and Spring Boot, Docker, Kubernetes
+- Contact: prateekjanagouda1008@gmail.com
+
+## Work (described at a general level)
+
+- Codebase Q&A agent: answers plain-English questions about a large microservice codebase with citations into the source; relational store for structure plus vector store for semantic search; answers without evidence are rejected by a validator.
+- Config-upgrade agent: carries configuration upgrades across deployment environments by emitting JSON Patch operations only (never rewriting YAML); every change is rendered, schema-checked and linted, with rollback.
+- Team-scale LLM serving: moved an internal code-generation tool from a local model server to vLLM with continuous batching so a whole engineering team can use it concurrently.
+
+## Personal projects
+
+- [MiniRAG](https://github.com/PrateekJanagouda/minirag): a full RAG pipeline written from scratch with numpy and FastAPI, no LangChain or vector database.
+- [PyTestGen](https://github.com/PrateekJanagouda/pytestgen): a CLI that writes unit tests for Python files with a local LLaMA model, fully offline.
+- [Bunaai Ghar](https://www.bunaaighar.in/): website for a handmade crochet studio (client work).
+
+## Links
+
+- [Portfolio](https://prateekjanagouda.github.io/)
+- [LinkedIn](https://www.linkedin.com/in/prateek-janagouda)
+- [GitHub](https://github.com/PrateekJanagouda)
+- [Resume (PDF)](https://prateekjanagouda.github.io/resume.pdf)
